@@ -28,7 +28,21 @@ spec:
             memory: "110Mi"
             cpu: "90m"
    
+---
 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythonsvc
+  namespace: frontend
+spec:
+  selector:
+    app: pythonapp
+  ports:
+  - name: http
+    port: 8500
+    targetPort: 8500
 
 
 
