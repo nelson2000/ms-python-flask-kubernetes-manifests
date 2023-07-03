@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pythonapp
-        image: nwajienelson/pythonapp:latest:5:3
+        image: nwajienelson/pythonapp:latest
         ports:
         - containerPort: 8500
         resources:
