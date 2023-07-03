@@ -17,8 +17,15 @@ node {
 
                         sh "git config user.email nwajienelson@gmail.com"
                         sh "git config user.name nelson"
+                        sh "echo 'below is echo workspace'"
+                        sh "echo $WORKSPACE"
+                        sh "echo 'below is ls workspace'"
+                        sh "ls $WORKSPACE"
+                        sh "echo 'below is ls -ltar'"
+                        sh "ls -ltar"
                         sh "cat deployment.yaml"
                         sh "sed -i 's+nwajienelson/pythonapp*+nwajienelson/pythonapp:${DOCKERTAG}+g' deployment.yaml"
+                        
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
