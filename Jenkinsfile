@@ -26,7 +26,8 @@ node {
                         sh "echo 'below is ls -ltar'"
                         sh "ls -ltar"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+nwajienelson/pythonapp*+nwajienelson/pythonapp:${DOCKERTAG}+g' deployment.yaml"
+                        sh "sed -i 's+nwajienelson/pythonapp***+nwajienelson/pythonapp+g' deployment.yaml"
+                        sh "sed -i 's+nwajienelson/pythonapp+nwajienelson/pythonapp:${DOCKERTAG}+g' deployment.yaml"
                         
                         sh "cat deployment.yaml"
                         sh "git add ."
