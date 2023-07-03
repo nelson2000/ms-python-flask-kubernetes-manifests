@@ -1,6 +1,8 @@
 node {
 
         def app
+        // def repoUrlWithAuth = "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/ms-python-flask-kubernetes-manifests.git"
+        // def sourceBranch = "main"
 
         stage("clone repository") {
             
@@ -29,7 +31,7 @@ node {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        SH "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/${GIT_USERNAME}/ms-python-flask-kubernetes-manifests.git HEAD:main"
+                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/ms-python-flask-kubernetes-manifests.git HEAD:main"
                 }  
                      
                
@@ -40,6 +42,12 @@ node {
 
     }
 }  
+
+
+// def repoUrlWithAuth = "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/ms-python-flask-kubernetes-manifests.git"
+// def sourceBranch = "main"
+
+// git push --repo=${repoUrlWithAuth} --set-upstream ${repoUrlWithAuth} ${sourceBranch}
 
 // pipeline {
 //     agent any
