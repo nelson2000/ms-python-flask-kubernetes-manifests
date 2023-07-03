@@ -6,7 +6,7 @@ metadata:
     app: pythonapp
   namespace: frontend
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: pythonapp
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pythonapp
-        image: nwajienelson/pythonapp:7
+        image: nwajienelson/pythonapp:latest
         ports:
         - containerPort: 8500
         resources:
