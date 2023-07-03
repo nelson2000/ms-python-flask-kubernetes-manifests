@@ -4,7 +4,7 @@ node {
 
         stage("clone repository") {
             
-            checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nelson2000/ms-python-flask-kubernetes-manifests.git']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nelson2000/ms-python-flask-kubernetes-manifests.git']])
         }
 
 
@@ -29,8 +29,9 @@ node {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        SH "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/argo-yaml.git HEAD:main"
-                }
+                        SH "git push https://${GIT_USERNAME}:${GIT_PASSWORD} @github.com:${GIT_USERNAME}/ms-python-flask-kubernetes-manifests.git HEAD:main"
+                }  
+                     
                
             }
         }
@@ -40,5 +41,30 @@ node {
     }
 }  
 
+// pipeline {
+//     agent any
+    
+//     stages {
+//         stage('Git Push') {
+//             steps {
+//                 script {
+//                     // Configure Git user
+//                     gitConfigureUser('John Doe', 'john.doe@example.com')
+                    
+//                     // Git push
+//                     withCredentials([usernamePassword(credentialsId: '<credentials-id>', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+//                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<repository-url> <branch-name>"
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// def gitConfigureUser(name, email) {
+//     // Configure Git user name and email
+//     sh "git config --global user.name '${name}'"
+//     sh "git config --global user.email '${email}'"
+// }
 
     // jenkins url 20.220.74.174:8085
