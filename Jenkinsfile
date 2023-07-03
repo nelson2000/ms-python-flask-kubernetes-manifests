@@ -28,6 +28,7 @@ node {
                         sh "cat deployment.yaml"
                         sh "sed -i 's+nwajienelson/pythonapp.*+nwajienelson/pythonapp+g' deployment.yaml"
                         sh "sed -i 's+nwajienelson/pythonapp+nwajienelson/pythonapp:${DOCKERTAG}+g' deployment.yaml"
+                        sh "sed -i 's+replicas:.*+replicas: ${REPLICAS}+g' deployment.yaml"
                         
                         sh "cat deployment.yaml"
                         sh "git add ."
