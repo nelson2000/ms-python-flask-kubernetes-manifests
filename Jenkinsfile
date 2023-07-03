@@ -3,7 +3,8 @@ node {
         def app
 
         stage("clone repository") {
-            checkout scm
+            
+            checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nelson2000/ms-python-flask-sample.git']])
         }
 
 
@@ -32,4 +33,5 @@ node {
     }
 }  
 
-    20.220.74.174:8085
+
+    // jenkins url 20.220.74.174:8085
